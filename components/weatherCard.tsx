@@ -57,12 +57,12 @@ const statIcons: Record<string, React.ReactNode> = {
 
 function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="group rounded-2xl border border-white/5 bg-white/[0.03] p-4 backdrop-blur-sm transition hover:border-sky-400/20 hover:bg-white/[0.06]">
-      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-white transition group-hover:bg-white/15">
+    <div className="group min-w-0 rounded-2xl border border-white/5 bg-white/[0.03] p-3 backdrop-blur-sm transition hover:border-sky-400/20 hover:bg-white/[0.06] sm:p-4">
+      <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white transition group-hover:bg-white/15 sm:mb-3 sm:h-9 sm:w-9">
         {icon}
       </div>
-      <p className="text-xs font-medium uppercase tracking-wider text-white">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-white">{value}</p>
+      <p className="text-[10px] font-medium uppercase tracking-wider text-white sm:text-xs">{label}</p>
+      <p className="mt-1 break-words text-xs font-semibold leading-snug text-white sm:text-sm">{value}</p>
     </div>
   );
 }
@@ -77,14 +77,14 @@ function WeatherCard() {
   const description = weather?.weather[0]?.description ?? '';
 
   return (
-    <div className="relative z-10 w-full max-w-5xl">
-      <div className={`rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl ${weather ? 'p-6 sm:p-8' : 'p-8 sm:p-10'}`}>
+    <div className="relative z-10 w-full min-w-0">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-8">
         <div className="text-center">
           <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-sky-400 bg-sky-500/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-sky-300">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-300 animate-pulse-glow" />
             Live Weather
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-sky-500 sm:text-4xl">
+          <h1 className="text-2xl font-bold tracking-tight text-sky-500 sm:text-4xl">
             Weather App
           </h1>
           <p className="mt-2 text-sm text-gray-100">
@@ -92,7 +92,7 @@ function WeatherCard() {
           </p>
         </div>
 
-        <div className={`flex justify-center ${weather ? 'mt-5' : 'mt-8'}`}>
+        <div className="mt-6 flex justify-center sm:mt-8">
           <SearchInput
             setWeather={setWeather}
             setForecast={setForecast}
@@ -102,19 +102,21 @@ function WeatherCard() {
           />
         </div>
 
-        <ErrorToast message={error.message} />
+        <div className="mt-4 flex justify-center">
+          <ErrorToast message={error.message} />
+        </div>
 
         {weather && !loading && (
-          <div className="animate-fade-up mt-5 flex flex-col gap-4 lg:flex-row lg:items-start">
-            <div className="flex-1">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 p-6 sm:p-8">
+          <div className="animate-fade-up mt-5 flex min-w-0 flex-col gap-4 lg:flex-row lg:items-start">
+            <div className="min-w-0 flex-1">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 p-5 sm:p-8">
               <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
 
-              <div className="relative flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:justify-between">
-                <div className="text-center sm:text-left">
-                  <h2 className="text-2xl font-bold text-white sm:text-3xl">
+              <div className="relative flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:text-left">
+                <div className="min-w-0">
+                  <h2 className="text-xl font-bold text-white sm:text-3xl">
                     {weather.name}
-                    <span className="ml-2 text-lg font-normal text-white">{weather.sys.country}</span>
+                    <span className="ml-2 text-base font-normal text-white sm:text-lg">{weather.sys.country}</span>
                   </h2>
                   <p className="mt-1 capitalize text-white">{description}</p>
                   <p className="mt-3 text-sm text-white">
@@ -122,7 +124,7 @@ function WeatherCard() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex shrink-0 items-center gap-1 sm:gap-2">
                   {icon && (
                     <div className="relative">
                       <div className="absolute inset-0 rounded-full bg-sky-400/20 blur-xl" />
@@ -131,19 +133,19 @@ function WeatherCard() {
                         alt={description}
                         width={100}
                         height={100}
-                        className="relative drop-shadow-lg"
+                        className="relative h-16 w-16 drop-shadow-lg sm:h-[100px] sm:w-[100px]"
                       />
                     </div>
                   )}
-                  <p className="text-6xl font-light tracking-tighter text-white sm:text-7xl">
+                  <p className="text-5xl font-light tracking-tighter text-white sm:text-7xl">
                     {kelvinToCelsius(weather.main.temp)}
-                    <span className="text-3xl text-sky-400">°</span>
+                    <span className="text-2xl text-sky-400 sm:text-3xl">°</span>
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
               <StatCard
                 icon={statIcons.minMax}
                 label="Min / Max"
