@@ -2,7 +2,7 @@ import WeatherCard from "../components/weatherCard";
 
 export default function Home() {
   return (
-    <main className="relative isolate w-full min-h-dvh overflow-x-clip px-4 py-6 sm:py-8">
+    <main className="relative isolate w-full max-w-full min-h-dvh overflow-x-hidden px-4 py-6 sm:py-8">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(56,189,248,0.15)_0%,_transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(99,102,241,0.12)_0%,_transparent_55%)]" />

@@ -77,8 +77,8 @@ function WeatherCard() {
   const description = weather?.weather[0]?.description ?? '';
 
   return (
-    <div className="relative z-10 w-full min-w-0">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-8">
+    <div className="relative z-10 w-full min-w-0 max-w-full">
+      <div className="max-w-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-8">
         <div className="text-center">
           <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-sky-400 bg-sky-500/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-sky-300">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-300 animate-pulse-glow" />
@@ -112,9 +112,9 @@ function WeatherCard() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 p-5 sm:p-8">
               <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
 
-              <div className="relative flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:text-left">
-                <div className="min-w-0">
-                  <h2 className="text-xl font-bold text-white sm:text-3xl">
+              <div className="relative flex w-full min-w-0 flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:text-left">
+                <div className="min-w-0 max-w-full">
+                  <h2 className="break-words text-xl font-bold text-white sm:text-3xl">
                     {weather.name}
                     <span className="ml-2 text-base font-normal text-white sm:text-lg">{weather.sys.country}</span>
                   </h2>
@@ -124,9 +124,9 @@ function WeatherCard() {
                   </p>
                 </div>
 
-                <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+                <div className="flex max-w-full min-w-0 flex-wrap items-center justify-center gap-1 sm:gap-2">
                   {icon && (
-                    <div className="relative">
+                    <div className="relative shrink-0 overflow-hidden rounded-full">
                       <div className="absolute inset-0 rounded-full bg-sky-400/20 blur-xl" />
                       <Image
                         src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
@@ -137,7 +137,7 @@ function WeatherCard() {
                       />
                     </div>
                   )}
-                  <p className="text-5xl font-light tracking-tighter text-white sm:text-7xl">
+                  <p className="text-4xl font-light tracking-tight text-white sm:text-7xl">
                     {kelvinToCelsius(weather.main.temp)}
                     <span className="text-2xl text-sky-400 sm:text-3xl">°</span>
                   </p>

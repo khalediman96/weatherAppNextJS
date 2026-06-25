@@ -14,17 +14,19 @@
 }
 
 html {
-  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 html,
 body {
   min-height: 100dvh;
   width: 100%;
+  max-width: 100%;
 }
 
 body {
-  overflow-x: clip;
+  overflow-x: hidden;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   margin: 0;
   padding: 0;
