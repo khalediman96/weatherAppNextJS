@@ -77,8 +77,8 @@ function WeatherCard() {
   const description = weather?.weather[0]?.description ?? '';
 
   return (
-    <div className="relative z-10 w-full max-w-5xl max-h-[calc(100dvh-2rem)]">
-      <div className={`no-scrollbar overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl ${weather ? 'p-6 sm:p-8' : 'p-8 sm:p-10'}`}>
+    <div className="relative z-10 w-full max-w-5xl">
+      <div className={`rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl ${weather ? 'p-6 sm:p-8' : 'p-8 sm:p-10'}`}>
         <div className="text-center">
           <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-sky-400 bg-sky-500/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-sky-300">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-300 animate-pulse-glow" />
